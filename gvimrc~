@@ -10,60 +10,6 @@ set guioptions-=T
 set textwidth=0 
 set wrapmargin=0 
 
-"dictionary
-set spell
-set spellfile+=~/vimConfig/en.utf-8.add
-
-" set default op
-nmap <enter> i<enter><Esc>
-nmap <backspace> X
-nnoremap <Tab> >>_
-inoremap <C-backspace> <Esc>diwa
-nnoremap <C-backspace> diw
-
-" tab
-noremap <C-N>	gt
-noremap <C-P>	gT
-"noremap   <C-t> :tabnew<return>
-"noremap   <C-W> :tabclose<return>
-nmap <Leader>tn :tabnew<return>
-nmap <Leader>tc :tabclose<return>
-" switch to last opened tab
-let g:lasttab = 1
-nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
-au TabLeave * let g:lasttab = tabpagenr()
-
-
-" add date
-noremap <C-l> <Esc>!!date<return>4daWjS
-
-
-" google search
-" add firefox to path
-let $PATH .= ';C:\Program Files (x86)\Mozilla Firefox\'
-xnoremap <f1> "zy:!start firefox "http://www.google.com/search?q=<c-r>=substitute(@z,' ','%20','g')<cr>"<return>gv
-
-function! GoogleSearch()
-     let searchterm = getreg("g")
-     silent! exec "silent! !firefox \"http://google.com/search?q=" . searchterm . "\" &"
-endfunction
-vnoremap <F6> "gy<Esc>:call GoogleSearch()<CR>
-
-" path 
-lcd c:/sync/notes
-
-
-" auto correct words
-abbr hte the
-abbr teh the
-abbr adn and
-abbr wiht with
-abbr ti it
-abbr ot to
-abbr inot into
-"abbr
-
-
 " chinese char supports
 set enc=utf-8
 set fileencoding=utf-8
@@ -77,57 +23,8 @@ set guifont=Consolas:h20:cDEFAULT
 set guifontwide=NSimsun:h20
 
 
-"search
-set is
-set ic		"ignore case
+" run command that input in insert mode by mistake
+inoremap <F2> <Esc>u@.
 
-" avoid delete overwrite yanked register
-"noremap  y "*y
-"noremap  Y "*Y
-"noremap  p "*p
-"noremap  P "*P
-"vnoremap y "*y
-"vnoremap Y "*Y
-"vnoremap p "*p
-"vnoremap P "*P
-
-
-" Macro, add 0x, to binary string
-let @q = 'i0xlla, l'
-
-
-"comments on selected lines
-"vnoremap <C-/> I//<Esc>
-" Commenting blocks of code.
-autocmd FileType c,cpp,java,scala let b:comment_leader = '// '
-autocmd FileType sh,ruby,python   let b:comment_leader = '# '
-autocmd FileType conf,fstab       let b:comment_leader = '# '
-autocmd FileType tex              let b:comment_leader = '% '
-autocmd FileType mail             let b:comment_leader = '> '
-autocmd FileType vim              let b:comment_leader = '" '
-noremap <silent> ,cc :<C-B>silent <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:nohlsearch<CR>
-noremap <silent> ,cu :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohlsearch<CR>
-
-
-"let CSCOPE_DB=$WORK/cscope.out
-if has("cscope")
-	set csprg=c:/cygwin/bin/cscope.exe
-	set csto=0
-	set cst
-	set nocsverb
-	" add any database in current directory
-	if filereadable("cscope.out")
-		cs add cscope.out
-	" else add database pointed to by environment
-	"elseif $CSCOPE_DB != ""
-	else 
-		cs add $WORK/cscope.out
-	endif
-	set csverb
-endif
-
-
-" taglist
-filetype on
-nnoremap <silent> <F9> :TlistToggle<CR>
-
+" for win32 only, increase the number
+noremap <C-I> <C-A>

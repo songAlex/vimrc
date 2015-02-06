@@ -32,7 +32,7 @@ endfunction
 colorscheme wombat
 "dictionary
 set spell
-set spellfile+=~/vimConfig/en.utf-8.add
+set spellfile+=~/vimfiles/spell/en.utf-8.add
 
 " set default op
 nmap <enter> i<enter><Esc>
@@ -136,6 +136,7 @@ endif
 
 
 " taglist
-filetype on
 nnoremap <silent> <F9> :TlistToggle<CR>
+
+let g:alternateNoDefaultAlternate = 1
 

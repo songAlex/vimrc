@@ -136,6 +136,5 @@ endif
 
 
 " taglist
-filetype on
 nnoremap <silent> <F9> :TlistToggle<CR>
 
