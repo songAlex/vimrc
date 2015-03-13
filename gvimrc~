@@ -28,3 +28,4 @@ inoremap <F2> <Esc>u@.
 
 " for win32 only, increase the number
 noremap <C-I> <C-A>
+" for decrease, C-X

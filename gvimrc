@@ -23,9 +23,3 @@ set guifont=Consolas:h20:cDEFAULT
 set guifontwide=NSimsun:h20
 
 
-" run command that input in insert mode by mistake
-inoremap <F2> <Esc>u@.
-
-" for win32 only, increase the number
-noremap <C-I> <C-A>
-" for decrease, C-X

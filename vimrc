@@ -82,6 +82,8 @@ abbr wiht with
 abbr ti it
 abbr ot to
 abbr inot into
+abbr fo of
+abbr thsi this
 "abbr
 
 
@@ -136,5 +138,13 @@ endif
 
 
 " taglist
-nnoremap <silent> <F9> :TlistToggle<CR>
+nnoremap <silent> <F12> :TlistToggle<CR>
+
+" run command that input in insert mode by mistake
+inoremap <F2> <Esc>u@.
+
+" for win32 only, increase the number
+noremap <C-I> <C-A>
+" for decrease, C-X
+
 

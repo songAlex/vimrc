@@ -868,7 +868,7 @@ function! C_InitMenus ()
 	endif
 	"
 	exe "amenu  <silent>  ".s:Run.'.save\ and\ &compile<Tab>\<A-F9\>         :call C_Compile()<CR>:redraw<CR>:call C_HlMessage()<CR>'
-	"exe "amenu  <silent>  ".s:Run.'.&link<Tab>\<F9\>                         :call C_Link()<CR>:redraw<CR>:call C_HlMessage()<CR>'
+	exe "amenu  <silent>  ".s:Run.'.&link<Tab>\<F9\>                         :call C_Link()<CR>:redraw<CR>:call C_HlMessage()<CR>'
 	exe "amenu  <silent>  ".s:Run.'.&run<Tab>\<C-F9\>                        :call C_Run()<CR>'
 	exe "amenu  <silent>  ".s:Run.'.cmd\.\ line\ &arg\.<Tab>\<S-F9\>         :call C_Arguments()<CR>'
 	exe "amenu  <silent>  ".s:Run.'.-SEP0-                            :'
