@@ -1,8 +1,52 @@
 set nocompatible
+let myos = substitute(system('uname -o'), "\n", "", "")
+if myos == "Linux"
+  " do stuff under linux and "
+  set shell=/bin/sh
+elseif myos == "Cygwin"
+  " do stuff under windows "
 source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
 behave mswin
 
+
+" taglist
+nnoremap <silent> <F12> :TlistToggle<CR>
+
+
+"let CSCOPE_DB=$WORK/cscope.out
+if has("cscope")
+	set csprg=c:/cygwin/bin/cscope.exe
+	set csto=0
+	set cst
+	set nocsverb
+	" add any database in current directory
+	if filereadable("cscope.out")
+		cs add cscope.out
+	" else add database pointed to by environment
+	"elseif $CSCOPE_DB != ""
+	else 
+		cs add $WORK/cscope.out
+	endif
+	set csverb
+endif
+
+
+" google search
+" add firefox to path
+let $PATH .= ';C:\Program Files (x86)\Mozilla Firefox\'
+xnoremap <f1> "zy:!start firefox "http://www.google.com/search?q=<c-r>=substitute(@z,' ','%20','g')<cr>"<return>gv
+
+function! GoogleSearch()
+     let searchterm = getreg("g")
+     silent! exec "silent! !firefox \"http://google.com/search?q=" . searchterm . "\" &"
+endfunction
+vnoremap <F6> "gy<Esc>:call GoogleSearch()<CR>
+
+endif
+
+
+" command config for all OS
 set diffexpr=MyDiff()
 function MyDiff()
   let opt = '-a --binary '
@@ -28,11 +72,13 @@ function MyDiff()
   silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
 endfunction
 
+
 " set color
 colorscheme wombat
 "dictionary
 set spell
 set spellfile+=~/vimfiles/spell/en.utf-8.add
+
 
 " set default op
 nmap <enter> i<enter><Esc>
@@ -40,6 +86,7 @@ nmap <backspace> X
 nnoremap <Tab> >>_
 inoremap <C-backspace> <Esc>diwa
 nnoremap <C-backspace> diw
+
 
 " tab
 noremap <C-N>	gt
@@ -58,22 +105,6 @@ au TabLeave * let g:lasttab = tabpagenr()
 noremap <C-l> <Esc>!!date<return>4daWjS
 
 
-" google search
-" add firefox to path
-let $PATH .= ';C:\Program Files (x86)\Mozilla Firefox\'
-xnoremap <f1> "zy:!start firefox "http://www.google.com/search?q=<c-r>=substitute(@z,' ','%20','g')<cr>"<return>gv
-
-function! GoogleSearch()
-     let searchterm = getreg("g")
-     silent! exec "silent! !firefox \"http://google.com/search?q=" . searchterm . "\" &"
-endfunction
-vnoremap <F6> "gy<Esc>:call GoogleSearch()<CR>
-
-
-" path 
-"lcd c:/sync/notes
-
-
 " auto correct words
 abbr hte the
 abbr teh the
@@ -84,11 +115,10 @@ abbr ot to
 abbr inot into
 abbr fo of
 abbr thsi this
-"abbr
 
 
 "search
-set is
+set is		"increase search
 set ic		"ignore case
 
 " avoid delete overwrite yanked register
@@ -118,33 +148,11 @@ autocmd FileType vim              let b:comment_leader = '" '
 noremap <silent> ,cc :<C-B>silent <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:nohlsearch<CR>
 noremap <silent> ,cu :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohlsearch<CR>
 
-
-"let CSCOPE_DB=$WORK/cscope.out
-if has("cscope")
-	set csprg=c:/cygwin/bin/cscope.exe
-	set csto=0
-	set cst
-	set nocsverb
-	" add any database in current directory
-	if filereadable("cscope.out")
-		cs add cscope.out
-	" else add database pointed to by environment
-	"elseif $CSCOPE_DB != ""
-	else 
-		cs add $WORK/cscope.out
-	endif
-	set csverb
-endif
-
-
-" taglist
-nnoremap <silent> <F12> :TlistToggle<CR>
-
 " run command that input in insert mode by mistake
 inoremap <F2> <Esc>u@.
+
 
 " for win32 only, increase the number
 noremap <C-I> <C-A>
 " for decrease, C-X
-
 
