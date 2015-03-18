@@ -1,8 +1,8 @@
 set nocompatible
 let myos = substitute(system('uname -o'), "\n", "", "")
 if myos == "GNU/Linux"
-  " do stuff under linux and "
-  " set shell=/bin/sh
+set hls
+
 elseif myos == "Cygwin"
   " do stuff under windows "
 source $VIMRUNTIME/vimrc_example.vim

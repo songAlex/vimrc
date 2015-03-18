@@ -17,9 +17,15 @@ set fileencodings=ucs-bom,utf8,prc
 
 
 "fonts 
+let myos = substitute(system('uname -o'), "\n", "", "")
+if myos == "GNU/Linux"
+set hls
 "set guifont=Monaco:h11
-"set guifont=Consolas:h20:cDEFAULT
+set gfn=Monospace\ 18
+
+else
 set guifont=Consolas:h20:cDEFAULT
+
+endif
+
 set guifontwide=NSimsun:h20
-
-
