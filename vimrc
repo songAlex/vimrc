@@ -2,6 +2,17 @@ set nocompatible
 let myos = substitute(system('uname -o'), "\n", "", "")
 if myos == "GNU/Linux"
 set hls
+" some windows hot key
+" Use CTRL-S for saving, also in Insert mode
+noremap <C-S>		:update<CR>
+vnoremap <C-S>		<C-C>:update<CR>
+inoremap <C-S>		<C-O>:update<CR>
+
+" Use CTRL-S for saving, also in Insert mode
+noremap <C-S>		:update<CR>
+vnoremap <C-S>		<C-C>:update<CR>
+inoremap <C-S>		<C-O>:update<CR>
+
 
 elseif myos == "Cygwin"
   " do stuff under windows "

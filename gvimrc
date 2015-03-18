@@ -17,7 +17,7 @@ set fileencodings=ucs-bom,utf8,prc
 
 
 "fonts 
-let myos = substitute(system('uname -o'), "\n", "", "")
+"let mygos = substitute(system('uname -o'), "\n", "", "")
 if myos == "GNU/Linux"
 set hls
 "set guifont=Monaco:h11
