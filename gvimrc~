@@ -16,8 +16,8 @@ set fileencoding=utf-8
 set fileencodings=ucs-bom,utf8,prc
 
 " change cursor color
-au InsertLeave * hi Cursor guibg=Seagreen
-au InsertEnter * hi Cursor guibg=LightYellow
+au InsertLeave * hi Cursor guibg=yellow
+au InsertEnter * hi Cursor guibg=blue
 
 "fonts 
 "let mygos = substitute(system('uname -o'), "\n", "", "")
