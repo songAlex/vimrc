@@ -95,8 +95,10 @@ set spellfile+=~/vimfiles/spell/en.utf-8.add
 nmap <enter> i<enter><Esc>
 nmap <backspace> X
 nnoremap <Tab> >>_
-inoremap <C-backspace> <Esc>diwa
-nnoremap <C-backspace> diw
+"inoremap <C-backspace> <Esc>diwa
+inoremap <C-backspace> <Esc>dbxi
+"nnoremap <C-backspace> diw
+nnoremap <C-backspace> db
 
 
 " tab
@@ -129,6 +131,9 @@ abbr fo of
 abbr thsi this
 abbr wehn when
 abbr fro for
+abbr fi if
+abbr si is
+
 
 
 "search
@@ -179,6 +184,11 @@ noremap <C-j> :tabnew
 noremap <C-o> o<Esc>
 
 
-" past the yan data
-"noremap <A-p> p
+" past the yank data
+"noremap <A-p>
 noremap ð "0p
+"noremap <A-y> 
+noremap ù viw"+y
+
+" for blog menu
+noremap <C-h> yyq/p<enter>
