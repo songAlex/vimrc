@@ -8,10 +8,20 @@ noremap <C-S>		:update<CR>
 vnoremap <C-S>		<C-C>:update<CR>
 inoremap <C-S>		<C-O>:update<CR>
 
-" Use CTRL-S for saving, also in Insert mode
-noremap <C-S>		:update<CR>
-vnoremap <C-S>		<C-C>:update<CR>
-inoremap <C-S>		<C-O>:update<CR>
+" CTRL-X and SHIFT-Del are Cut
+vnoremap <C-X> "+x
+vnoremap <S-Del> "+x
+
+" CTRL-C and CTRL-Insert are Copy
+vnoremap <C-C> "+y
+vnoremap <C-Insert> "+y
+
+" CTRL-V and SHIFT-Insert are Paste
+map <C-V>		"+gP
+map <S-Insert>		"+gP
+
+cmap <C-V>		<C-R>+
+cmap <S-Insert>		<C-R>+
 
 
 elseif myos == "Cygwin"
@@ -26,21 +36,22 @@ nnoremap <silent> <F12> :TlistToggle<CR>
 
 
 "let CSCOPE_DB=$WORK/cscope.out
-if has("cscope")
-	set csprg=c:/cygwin/bin/cscope.exe
-	set csto=0
-	set cst
-	set nocsverb
-	" add any database in current directory
-	if filereadable("cscope.out")
-		cs add cscope.out
-	" else add database pointed to by environment
-	"elseif $CSCOPE_DB != ""
-	else 
-		cs add $WORK/cscope.out
-	endif
-	set csverb
-endif
+" too slow to load all test, connect to db by hand
+"if has("cscope")
+"	set csprg=c:/cygwin/bin/cscope.exe
+"	set csto=0
+"	set cst
+"	set nocsverb
+"	" add any database in current directory
+"	if filereadable("cscope.out")
+"		cs add cscope.out
+"	" else add database pointed to by environment
+"	"elseif $CSCOPE_DB != ""
+"	else 
+"		cs add $WORK/cscope.out
+"	endif
+"	set csverb
+"endif
 
 
 " google search
@@ -192,3 +203,6 @@ noremap ù viw"+y
 
 " for blog menu
 noremap <C-h> yyq/p<enter>
+
+" keep replace the searched word with yanked word
+noremap ò viw"0p
