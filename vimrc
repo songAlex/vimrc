@@ -144,6 +144,8 @@ abbr wehn when
 abbr fro for
 abbr fi if
 abbr si is
+abbr nto not
+abbr functoin function
 
 
 
@@ -205,4 +207,14 @@ noremap ù viw"+y
 noremap <C-h> yyq/p<enter>
 
 " keep replace the searched word with yanked word
+" A-r
 noremap ò viw"0p
+
+"
+"function tw()
+"	:set tw=0
+"endfunction
+"noremap ¹ exec tw()
+" alt 0
+noremap ° :set tw=0<enter>
+
