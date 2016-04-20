@@ -218,5 +218,5 @@ noremap ò viw"0p
 " alt 0
 noremap ° :set tw=0<enter>
 
-" open vim maximized
-set lines=2999 columns=2999
+" close tab
+noremap <C-w> :q
