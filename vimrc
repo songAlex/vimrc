@@ -17,7 +17,8 @@ vnoremap <C-C> "+y
 vnoremap <C-Insert> "+y
 
 " CTRL-V and SHIFT-Insert are Paste
-map <C-V>		"+gP
+map <C-V>		"*p
+"map <C-V>		"+gP
 map <S-Insert>		"+gP
 
 cmap <C-V>		<C-R>+
@@ -128,6 +129,7 @@ au TabLeave * let g:lasttab = tabpagenr()
 " add date
 "noremap <C-l> <Esc>!!date<return>4daWjS
 noremap <C-l> <Esc>o<Esc>!!date /t<return>kJ
+inoremap <C-l> <Esc>o<Esc>!!date /t<return>kJ
 
 
 " auto correct words
