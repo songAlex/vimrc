@@ -27,8 +27,8 @@ set hls
 set gfn=Monospace\ 18
 
 else
-set guifont=Consolas:h20:cDEFAULT
+set guifont=Consolas:h16:cDEFAULT
 
 endif
 
-set guifontwide=NSimsun:h20
+set guifontwide=NSimsun:h16
