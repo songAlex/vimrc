@@ -1,32 +1,9 @@
 set nocompatible
-let myos = substitute(system('uname -o'), "\n", "", "")
-if myos == "GNU/Linux"
+
 set hls
-" some windows hot key
-" Use CTRL-S for saving, also in Insert mode
-noremap <C-S>		:update<CR>
-vnoremap <C-S>		<C-C>:update<CR>
-inoremap <C-S>		<C-O>:update<CR>
-
-" CTRL-X and SHIFT-Del are Cut
-vnoremap <C-X> "+x
-vnoremap <S-Del> "+x
-
-" CTRL-C and CTRL-Insert are Copy
-vnoremap <C-C> "+y
-vnoremap <C-Insert> "+y
-
-" CTRL-V and SHIFT-Insert are Paste
-map <C-V>		"*p
-"map <C-V>		"+gP
-map <S-Insert>		"+gP
-
-cmap <C-V>		<C-R>+
-cmap <S-Insert>		<C-R>+
 
 
-elseif myos == "Cygwin"
-  " do stuff under windows "
+" do stuff under windows "
 source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
 behave mswin
@@ -48,7 +25,7 @@ nnoremap <silent> <F12> :TlistToggle<CR>
 "		cs add cscope.out
 "	" else add database pointed to by environment
 "	"elseif $CSCOPE_DB != ""
-"	else 
+"	else
 "		cs add $WORK/cscope.out
 "	endif
 "	set csverb
@@ -66,41 +43,17 @@ function! GoogleSearch()
 endfunction
 vnoremap <F6> "gy<Esc>:call GoogleSearch()<CR>
 
-endif
-
-
-" command config for all OS
-" set diffexpr=MyDiff()
-" function MyDiff()
-"   let opt = '-a --binary '
-"   if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
-"   if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
-"   let arg1 = v:fname_in
-"   if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
-"   let arg2 = v:fname_new
-"   if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
-"   let arg3 = v:fname_out
-"   if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
-"   let eq = ''
-"   if $VIMRUNTIME =~ ' '
-"     if &sh =~ '\<cmd'
-"       let cmd = '""' . $VIMRUNTIME . '\diff"'
-"       let eq = '"'
-"     else
-"       let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
-"     endif
-"   else
-"     let cmd = $VIMRUNTIME . '\diff'
-"   endif
-"   silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
-" endfunction
 
 
 " set color
-colorscheme wombat
+"colorscheme wombat
+colorscheme one
+set background=dark
+
 "dictionary
-set spell
-set spellfile+=~/vimfiles/spell/en.utf-8.add
+"set spell
+set nospell
+set spellfile+=~/.vim/spell/en.utf-8.add
 
 
 " set default op
@@ -155,16 +108,6 @@ abbr functoin function
 set is		"increase search
 set ic		"ignore case
 
-" avoid delete overwrite yanked register
-"noremap  y "*y
-"noremap  Y "*Y
-"noremap  p "*p
-"noremap  P "*P
-"vnoremap y "*y
-"vnoremap Y "*Y
-"vnoremap p "*p
-"vnoremap P "*P
-
 
 " Macro, add 0x, to binary string
 let @q = 'i0xlla, l'
@@ -192,21 +135,22 @@ noremap <C-I> <C-A>
 
 
 " tab new
-noremap <C-j> :tabnew 
+noremap <C-j> :tabnew  
 
 
-" open a new line no insert mode 
+" open a new line no insert mode
 noremap <C-o> o<Esc>
 
 
 " past the yank data
 "noremap <A-p>
 noremap ð "0p
-"noremap <A-y> 
+"noremap <A-y>
 noremap ù viw"+y
 
 " for blog menu
-noremap <C-h> yyq/p<enter>
+"noremap <C-h> yyq/p<enter>
+noremap <C-h> 0f[lyt]q/p<enter>
 
 " keep replace the searched word with yanked word
 " A-r
@@ -224,5 +168,13 @@ noremap ° :set tw=0<enter>
 noremap <C-w> :q<enter>
 
 
-"set to tab as 4 space
-set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab 
+"copy current file path
+"alt 9
+noremap ¹ :let @+=expand("%")<enter>
+
+
+" for the cscope :cs add
+se csprg=c:\cygwin64\bin\cscope.exe
+
+" only check the English word
+autocmd FileType tex setlocal spell spelllang=en_us
