@@ -51,8 +51,8 @@ colorscheme one
 set background=dark
 
 "dictionary
-"set spell
-set nospell
+set spell
+"set nospell
 set spellfile+=~/.vim/spell/en.utf-8.add
 
 
@@ -79,10 +79,11 @@ nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
 au TabLeave * let g:lasttab = tabpagenr()
 
 
-" add date
+" add date and time
 "noremap <C-l> <Esc>!!date<return>4daWjS
-noremap <C-l> <Esc>o<Esc>!!date /t<return>kJ
-inoremap <C-l> <Esc>o<Esc>!!date /t<return>kJ
+noremap <C-l> <Esc>o<Esc>!!date -I<return>kJ
+inoremap <C-l> <Esc>o<Esc>!!date -I<return>kJ
+
 
 
 " auto correct words
