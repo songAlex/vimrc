@@ -20,19 +20,13 @@ au InsertLeave * hi Cursor guibg=Seagreen
 au InsertEnter * hi Cursor guibg=LightYellow
 
 "fonts 
-if !exists("g:os")
-    if has("win64") || has("win32") || has("win16")
-        let g:os = "Windows"
-    else
-        let g:os = substitute(system('uname'), '\n', '', '')
-    endif
-endif
 
 echo g:os
 
 if has("gui_running")
     if g:os == "Darwin"
-        set guifont=Fira\ Mono:h12
+		echo "gui_macvim GUI system!!!!"
+	    set guifont=Monaco:h17
 
     elseif g:os == "Linux"
         echo "Linux GUI system!"
@@ -44,9 +38,3 @@ if has("gui_running")
         set guifontwide=NSimsun:h14
     endif
 endif
-
-if has("gui_macvim")
-  set guifont=Monaco:h13
-  echo "gui_macvim GUI system!!!!"
-endif
-

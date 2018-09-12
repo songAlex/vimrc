@@ -1,3 +1,12 @@
+
+if !exists("g:os")
+    if has("win64") || has("win32") || has("win16")
+        let g:os = "Windows"
+    else
+        let g:os = substitute(system('uname'), '\n', '', '')
+    endif
+endif
+
 set nocompatible
 
 set hls
@@ -81,9 +90,15 @@ au TabLeave * let g:lasttab = tabpagenr()
 
 " add date and time
 "noremap <C-l> <Esc>!!date<return>4daWjS
-noremap <C-l> <Esc>o<Esc>!!date -I<return>kJ
-inoremap <C-l> <Esc>o<Esc>!!date -I<return>kJ
+if g:os == "Darwin"
+	noremap <C-l> <Esc>o<Esc>!!date<return>wxr-wwxr-wwDkJ
+	inoremap <C-l> <Esc>o<Esc>!!date<return>wxr-wwxr-wwDkJ
+elseif
+	noremap <C-l> <Esc>o<Esc>!!date -I<return>kJ
+	inoremap <C-l> <Esc>o<Esc>!!date -I<return>kJ
+endif
 
+	
 
 
 " auto correct words
@@ -156,6 +171,7 @@ noremap <C-h> 0f[lyt]q/p<enter>
 " keep replace the searched word with yanked word
 " A-r
 noremap ò viw"0p
+noremap ® viw"0p
 
 "
 "function tw()
