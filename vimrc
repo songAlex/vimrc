@@ -91,8 +91,8 @@ au TabLeave * let g:lasttab = tabpagenr()
 " add date and time
 "noremap <C-l> <Esc>!!date<return>4daWjS
 if g:os == "Darwin"
-	noremap <C-l> <Esc>o<Esc>!!date<return>wxr-wwxr-wwDkJ
-	inoremap <C-l> <Esc>o<Esc>!!date<return>wxr-wwxr-wwDkJ
+	inoremap <C-l> <Esc>o<Esc>!!date<return>:s/ //g<return>f年r-f月r-f日DkJ
+	noremap <C-l> <Esc>o<Esc>!!date<return>:s/ //g<return>f年r-f月r-f日DkJ
 elseif
 	noremap <C-l> <Esc>o<Esc>!!date -I<return>kJ
 	inoremap <C-l> <Esc>o<Esc>!!date -I<return>kJ
