@@ -75,9 +75,6 @@ inoremap <C-backspace> <Esc>dbxi
 nnoremap <C-backspace> db
 
 
-" tab
-noremap <C-N>	gt
-noremap <C-P>	gT
 "noremap   <C-t> :tabnew<return>
 "noremap   <C-W> :tabclose<return>
 nmap <Leader>tn :tabnew<return>
@@ -91,11 +88,20 @@ au TabLeave * let g:lasttab = tabpagenr()
 " add date and time
 "noremap <C-l> <Esc>!!date<return>4daWjS
 if g:os == "Darwin"
-	inoremap <C-l> <Esc>o<Esc>!!date<return>:s/ //g<return>f年r-f月r-f日DkJ
-	noremap <C-l> <Esc>o<Esc>!!date<return>:s/ //g<return>f年r-f月r-f日DkJ
+	inoremap <C-l> <Esc>o<Esc>!!date<return>:s/ //g<return>f年r-f月r-f日DkJ/asdf<return>
+	noremap <C-l> <Esc>o<Esc>!!date<return>:s/ //g<return>f年r-f月r-f日DkJ/asdf<return>
+	# cd to default directory
+	cd ~/notesJd
+
+	" tab
+	noremap <C-Tab>	gt
+	noremap <C-S-Tab>	gT
 elseif
 	noremap <C-l> <Esc>o<Esc>!!date -I<return>kJ
 	inoremap <C-l> <Esc>o<Esc>!!date -I<return>kJ
+	noremap <C-N>	gt
+	noremap <C-P>	gT
+	cd ~/notes
 endif
 
 	
@@ -161,6 +167,7 @@ noremap <C-o> o<Esc>
 " past the yank data
 "noremap <A-p>
 noremap ð "0p
+noremap π "0p
 "noremap <A-y>
 noremap ù viw"+y
 
@@ -195,3 +202,5 @@ se csprg=c:\cygwin64\bin\cscope.exe
 
 " only check the English word
 autocmd FileType tex setlocal spell spelllang=en_us
+
+cd /Users/sj/notesJd

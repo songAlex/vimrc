@@ -26,7 +26,7 @@ echo g:os
 if has("gui_running")
     if g:os == "Darwin"
 		echo "gui_macvim GUI system!!!!"
-	    set guifont=Monaco:h17
+	    set guifont=Consolas:h19
 
     elseif g:os == "Linux"
         echo "Linux GUI system!"
