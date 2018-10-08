@@ -90,18 +90,26 @@ au TabLeave * let g:lasttab = tabpagenr()
 if g:os == "Darwin"
 	inoremap <C-l> <Esc>o<Esc>!!date<return>:s/ //g<return>f年r-f月r-f日DkJ/asdf<return>
 	noremap <C-l> <Esc>o<Esc>!!date<return>:s/ //g<return>f年r-f月r-f日DkJ/asdf<return>
-	# cd to default directory
-	cd ~/notesJd
+	" cd to default directory
+	cd /Users/sj/notesJd
 
 	" tab
 	noremap <C-Tab>	gt
 	noremap <C-S-Tab>	gT
-elseif
+
+elseif g:os == "Linux"
 	noremap <C-l> <Esc>o<Esc>!!date -I<return>kJ
 	inoremap <C-l> <Esc>o<Esc>!!date -I<return>kJ
 	noremap <C-N>	gt
 	noremap <C-P>	gT
 	cd ~/notes
+
+elseif g:os == "Windows"
+	" config for mac win virtual 
+	noremap <C-l> <Esc>o<Esc>!!date /t<return>kJ
+	inoremap <C-l> <Esc>o<Esc>!!date /t<return>kJ
+	cd ~/notesJd
+
 endif
 
 	
@@ -181,7 +189,7 @@ noremap ò viw"0p
 noremap ® viw"0p
 
 "
-"function tw()
+"function tw()https://github.com/songAlex/vimrc.git
 "	:set tw=0
 "endfunction
 "noremap ¹ exec tw()
@@ -203,4 +211,3 @@ se csprg=c:\cygwin64\bin\cscope.exe
 " only check the English word
 autocmd FileType tex setlocal spell spelllang=en_us
 
-cd /Users/sj/notesJd

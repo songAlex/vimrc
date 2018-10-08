@@ -35,6 +35,6 @@ if has("gui_running")
     elseif g:os == "Windows"
         echo "windows GUI system!"
         set guifont=Consolas:h16:cDEFAULT
-        set guifontwide=NSimsun:h14
+        set guifontwide=NSimsun:h15
     endif
 endif
