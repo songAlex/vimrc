@@ -7,10 +7,6 @@ if !exists("g:os")
     endif
 endif
 
-set nocompatible
-
-set hls
-
 
 " do stuff under windows "
 source $VIMRUNTIME/vimrc_example.vim
@@ -18,46 +14,19 @@ source $VIMRUNTIME/mswin.vim
 behave mswin
 
 
-" taglist
-nnoremap <silent> <F12> :TlistToggle<CR>
-
-
-"let CSCOPE_DB=$WORK/cscope.out
-" too slow to load all test, connect to db by hand
-"if has("cscope")
-"	set csprg=c:/cygwin/bin/cscope.exe
-"	set csto=0
-"	set cst
-"	set nocsverb
-"	" add any database in current directory
-"	if filereadable("cscope.out")
-"		cs add cscope.out
-"	" else add database pointed to by environment
-"	"elseif $CSCOPE_DB != ""
-"	else
-"		cs add $WORK/cscope.out
-"	endif
-"	set csverb
-"endif
-
-
-" google search
-" add firefox to path
-let $PATH .= ';C:\Program Files (x86)\Mozilla Firefox\'
-xnoremap <f1> "zy:!start firefox "http://www.google.com/search?q=<c-r>=substitute(@z,' ','%20','g')<cr>"<return>gv
-
-function! GoogleSearch()
-     let searchterm = getreg("g")
-     silent! exec "silent! !firefox \"http://google.com/search?q=" . searchterm . "\" &"
-endfunction
-vnoremap <F6> "gy<Esc>:call GoogleSearch()<CR>
-
 
 
 " set color
 "colorscheme wombat
 colorscheme one
 set background=dark
+
+set nocompatible
+
+"search
+set is		"increase search
+set ic		"ignore case
+set hls
 
 "dictionary
 set spell
@@ -75,8 +44,7 @@ inoremap <C-backspace> <Esc>dbxi
 nnoremap <C-backspace> db
 
 
-"noremap   <C-t> :tabnew<return>
-"noremap   <C-W> :tabclose<return>
+" \tn \tl
 nmap <Leader>tn :tabnew<return>
 nmap <Leader>tc :tabclose<return>
 " switch to last opened tab
@@ -86,22 +54,19 @@ au TabLeave * let g:lasttab = tabpagenr()
 
 
 " add date and time
-"noremap <C-l> <Esc>!!date<return>4daWjS
 if g:os == "Darwin"
 	inoremap <C-l> <Esc>o<Esc>!!date<return>:s/ //g<return>f年r-f月r-f日DkJ/asdf<return>
 	noremap <C-l> <Esc>o<Esc>!!date<return>:s/ //g<return>f年r-f月r-f日DkJ/asdf<return>
 	" cd to default directory
 	cd /Users/sj/notesJd
 
-	" tab
-	noremap <C-Tab>	gt
-	noremap <C-S-Tab>	gT
+	" tab, if the karabiner is net to C-n for tab switch
+	" noremap <C-Tab>	gt
+	" noremap <C-S-Tab>	gT
 
 elseif g:os == "Linux"
 	noremap <C-l> <Esc>o<Esc>!!date -I<return>kJ
 	inoremap <C-l> <Esc>o<Esc>!!date -I<return>kJ
-	noremap <C-N>	gt
-	noremap <C-P>	gT
 	cd ~/notes
 
 elseif g:os == "Windows"
@@ -112,7 +77,8 @@ elseif g:os == "Windows"
 
 endif
 
-	
+noremap <C-N>	gt
+noremap <C-P>	gT
 
 
 " auto correct words
@@ -131,12 +97,8 @@ abbr fi if
 abbr si is
 abbr nto not
 abbr functoin function
+abbr waht what
 
-
-
-"search
-set is		"increase search
-set ic		"ignore case
 
 
 " Macro, add 0x, to binary string
@@ -175,24 +137,28 @@ noremap <C-o> o<Esc>
 " past the yank data
 "noremap <A-p>
 noremap ð "0p
-noremap π "0p
 "noremap <A-y>
 noremap ù viw"+y
+" keep replace the searched word with yanked word
+" A-r
+noremap ò viw"0p
+
+"copy current file path
+"alt 9
+noremap ¹ :let @+=expand("%")<enter>
+
+if g:os == "Darwin"
+noremap π "0p
+noremap ¥ viw"+y
+noremap ® viw"0p
+noremap ª :let @+=expand("%")<enter>
+endif
 
 " for blog menu
 "noremap <C-h> yyq/p<enter>
 noremap <C-h> 0f[lyt]q/p<enter>
 
-" keep replace the searched word with yanked word
-" A-r
-noremap ò viw"0p
-noremap ® viw"0p
 
-"
-"function tw()https://github.com/songAlex/vimrc.git
-"	:set tw=0
-"endfunction
-"noremap ¹ exec tw()
 " alt 0
 noremap ° :set tw=0<enter>
 
@@ -200,14 +166,5 @@ noremap ° :set tw=0<enter>
 noremap <C-w> :q<enter>
 
 
-"copy current file path
-"alt 9
-noremap ¹ :let @+=expand("%")<enter>
-
-
-" for the cscope :cs add
-se csprg=c:\cygwin64\bin\cscope.exe
-
 " only check the English word
 autocmd FileType tex setlocal spell spelllang=en_us
-
