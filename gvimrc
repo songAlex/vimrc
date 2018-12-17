@@ -32,9 +32,10 @@ if has("gui_running")
         echo "Linux GUI system!"
         set gfn=Monospace\ 13
 
+	" for the mac virtual only
     elseif g:os == "Windows"
         echo "windows GUI system!"
-        set guifont=Consolas:h16:cDEFAULT
-        set guifontwide=NSimsun:h15
+        set guifont=Consolas:h14:cDEFAULT
+        set guifontwide=NSimsun:h14
     endif
 endif

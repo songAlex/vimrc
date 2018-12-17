@@ -75,6 +75,8 @@ elseif g:os == "Windows"
 	inoremap <C-l> <Esc>o<Esc>!!date /t<return>kJ
 	cd ~/notesJd
 
+	set nospell
+
 endif
 
 noremap <C-N>	gt
@@ -164,7 +166,6 @@ noremap ° :set tw=0<enter>
 
 " close tab
 noremap <C-w> :q<enter>
-
 
 " only check the English word
 autocmd FileType tex setlocal spell spelllang=en_us
