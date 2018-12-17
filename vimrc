@@ -104,6 +104,11 @@ abbr waht what
 " Macro, add 0x, to binary string
 let @q = 'i0xlla, l'
 
+" macro, auto add the line number
+"1. need to mannually input the first line number
+"2. 3@w, auto change the following lines
+let @w = '^yWjP^	'
+
 
 "comments on selected lines
 "vnoremap <C-/> I//<Esc>
@@ -139,6 +144,8 @@ noremap <C-o> o<Esc>
 noremap ð "0p
 "noremap <A-y>
 noremap ù viw"+y
+"noremap <A-u> copy till $
+noremap ç v$"+y
 " keep replace the searched word with yanked word
 " A-r
 noremap ò viw"0p
@@ -150,6 +157,7 @@ noremap ¹ :let @+=expand("%")<enter>
 if g:os == "Darwin"
 noremap π "0p
 noremap ¥ viw"+y
+noremap ç v$"+y
 noremap ® viw"0p
 noremap ª :let @+=expand("%")<enter>
 endif
@@ -168,3 +176,9 @@ noremap <C-w> :q<enter>
 
 " only check the English word
 autocmd FileType tex setlocal spell spelllang=en_us
+
+
+vnoremap ˜ :let i=1|'<,'>g/^/s/^/\=i.". "/|let i=i+1
+
+# supporting swift syntax 
+execute pathogen#infect()
