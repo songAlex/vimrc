@@ -179,7 +179,7 @@ noremap <C-w> :q<enter>
 autocmd FileType tex setlocal spell spelllang=en_us
 
 
-vnoremap ˜ :let i=1|'<,'>g/^/s/^/\=i.". "/|let i=i+1
+"vnoremap ˜ :let i=1|'<,'>g/^/s/^/\=i.". "/|let i=i+1
 
-# supporting swift syntax 
+" supporting swift syntax 
 execute pathogen#infect()
