@@ -55,10 +55,13 @@ au TabLeave * let g:lasttab = tabpagenr()
 
 " add date and time
 if g:os == "Darwin"
-	inoremap <C-l> <Esc>o<Esc>!!date<return>:s/ //g<return>f年r-f月r-f日DkJ/asdf<return>
-	noremap <C-l> <Esc>o<Esc>!!date<return>:s/ //g<return>f年r-f月r-f日DkJ/asdf<return>
+
+	noremap <C-l> <Esc>o<Esc>!!date +'\%Y-\%m-\%d'<return>kJ
+	inoremap <C-l> <Esc>o<Esc>!!date +'\%Y-\%m-\%d'<return>kJ
+	" inoremap <C-l> <Esc>o<Esc>!!date<return>:s/ //g<return>f年r-f月r-f日DkJ/asdf<return>
+	" noremap <C-l> <Esc>o<Esc>!!date<return>:s/ //g<return>f年r-f月r-f日DkJ/asdf<return>
 	" cd to default directory
-	cd /Users/songjie5/notesJd
+	cd /Users/songjie/notes
 
 	" tab, if the karabiner is net to C-n for tab switch
 	" noremap <C-Tab>	gt
